@@ -1,0 +1,19 @@
+Practical:- 5
+
+Develop a webpage for “Course Details”. Display all course names with different colors.
+
+
+Code:-
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Course Details</title>
+</head>
+<body>
+<h1>Course Details</h1>
+<p style="color: red;">BCA</p>
+<p style="color: green;">MCA</p>
+<p style="color: blue;">BSc IT</p>
+</body>
+</html>

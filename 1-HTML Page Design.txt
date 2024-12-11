@@ -1,0 +1,22 @@
+Practical-1
+
+Design your Profile page with following details: - Personal Details - Educational Details - Profile Picture - Link of your
+workspace directory
+
+Code:-
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile Page</title>
+</head>
+<body>
+<h1>Dhruv Shah</h1>
+<p><strong>Personal Details:</strong> Age: 22, City: Vadodara</p>
+<p><strong>Educational Details:</strong> BCA - Parul University</p>
+<img src="profile.jpg" alt="Profile Picture" width="150" height="150">
+<p><a href="http://www.example.com/workspace">My Workspace</a></p>
+</body>
+</html>
+
+

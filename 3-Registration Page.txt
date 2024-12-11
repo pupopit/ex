@@ -1,0 +1,35 @@
+Practicals-3
+
+Develop an online Admission Registration page.
+
+
+Code:- 
+
+<html>
+<head>
+<title>Admission Registration</title>
+</head>
+<body>
+<h1>Register for Admission</h1>
+<form action="submit_registration.php" method="post">
+<label>Name:</label>
+<input type="text" name="name"><br><br>
+<label>Email:</label>
+<input type="email" name="email"><br><br>
+<label>Course:</label>
+<input type="text" name="course"><br><br>
+<input type="submit" value="Submit">
+</form>
+<?php
+// Capture form data
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$name = $_POST['name'];
+$email = $_POST['email'];
+$course = $_POST['course'];
+// Display submitted data
+echo "Name: " . htmlspecialchars($name) . "<br>";echo "Email: " . htmlspecialchars($email) . "<br>";
+echo "Course: " . htmlspecialchars($course) . "<br>";
+}
+?>
+</body>
+</html>

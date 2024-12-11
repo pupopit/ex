@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Manipulation Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Manipulation Tool</h1>
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+            <div class="upload-section">
+                <input type="file" name="image" accept="image/*" required>
+            </div>
+
+            <div class="manipulation-options">
+                <h2>Image Manipulation Options</h2>
+                
+                <div class="option-group">
+                    <h3>Resize</h3>
+                    <label>Width: <input type="number" name="resize_width" min="10" max="2000"></label>
+                    <label>Height: <input type="number" name="resize_height" min="10" max="2000"></label>
+                </div>
+
+                <div class="option-group">
+                    <h3>Crop</h3>
+                    <label>X Coordinate: <input type="number" name="crop_x" min="0"></label>
+                    <label>Y Coordinate: <input type="number" name="crop_y" min="0"></label>
+                    <label>Crop Width: <input type="number" name="crop_width" min="10"></label>
+                    <label>Crop Height: <input type="number" name="crop_height" min="10"></label>
+                </div>
+
+                <div class="option-group">
+                    <h3>Watermark</h3>
+                    <input type="file" name="watermark" accept="image/*">
+                    <select name="watermark_position">
+                        <option value="bottom-right">Bottom Right</option>
+                        <option value="top-left">Top Left</option>
+                        <option value="center">Center</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <h3>Output Format</h3>
+                    <select name="output_format">
+                        <option value="original">Original Format</option>
+                        <option value="jpg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Process Image</button>
+        </form>
+    </div>
+</body>
+</html>

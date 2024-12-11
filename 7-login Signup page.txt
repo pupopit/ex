@@ -1,0 +1,41 @@
+Practicals:-7
+
+Display Login and SignUp page and redirect to Profile or Registration page accordingly.
+
+Code:-
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login/Signup</title>
+</head>
+<body>
+<h1>Login</h1>
+<form action="login.php" method="post">
+<label>Username:</label>
+<input type="text" name="username"><br><br>
+<label>Password:</label>
+<input type="password" name="password"><br><br>
+<input type="submit" value="Login">
+</form>
+<h1>SignUp</h1>
+<form action="signup.php" method="post">
+<label>Username:</label>
+<input type="text" name="newuser"><br><br>
+<label>Password:</label>
+<input type="password" name="newpassword"><br><br>
+<input type="submit" value="SignUp">
+</form>
+<?phpif ($_SERVER["REQUEST_METHOD"] == "POST") {
+$username = $_POST['username'];
+$password = $_POST['password'];
+// Simulating a login check (in real projects, verify using a database)
+if ($username == "user" && $password == "pass") {
+echo "Login successful!";
+} else {
+echo "Invalid credentials!";
+}
+}
+?>
+</body>
+</html>

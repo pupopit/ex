@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #search-box {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #results {
+            border: 1px solid #ccc;
+            max-width: 300px;
+            background: #f9f9f9;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-item:hover {
+            background: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Search Box</h1>
+    <input type="text" id="search-box" placeholder="Search for users...">
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('search-box').addEventListener('input', function () {
+            const query = this.value;
+            if (query.length > 1) {
+                fetch(`search.php?q=${query}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('results').innerHTML = data;
+                    });
+            } else {
+                document.getElementById('results').innerHTML = '';
+            }
+        });
+
+        document.getElementById('results').addEventListener('click', function (e) {
+            if (e.target && e.target.matches('.result-item')) {
+                alert(`You selected: ${e.target.textContent}`);
+            }
+        });
+    </script>
+</body>
+</html>

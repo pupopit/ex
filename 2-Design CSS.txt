@@ -1,0 +1,19 @@
+Practical-2
+
+Create a general stylesheet to apply on your developed webpages. [ Use CSS class, CSS Groups and CSS tags ]
+
+Code:- 
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Styled Webpage</title>
+<style>
+h1, p { color: blue; }
+</style>
+</head>
+<body>
+<h1>Welcome to My Website</h1>
+<p>This is a styled paragraph.</p>
+</body>
+</html>

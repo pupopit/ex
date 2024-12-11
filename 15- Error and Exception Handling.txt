@@ -1,0 +1,75 @@
+15 - Develop a web application to perform Error and Exception Handling Operations. Implement proper requirements for demonstration.
+
+
+<?php
+// Start the session to use flash messages
+session_start();
+
+// Function to log errors
+function logError($message) {
+    $logFile = 'error.log';
+    $timestamp = date("Y-m-d H:i:s");
+    file_put_contents($logFile, "[$timestamp] $message" . PHP_EOL, FILE_APPEND);
+}
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        // Get the input number
+        if (!isset($_POST['number']) || !is_numeric($_POST['number'])) {
+            throw new InvalidArgumentException("Invalid input! Please enter a valid number.");
+        }
+
+        $number = (float)$_POST['number'];
+
+        // Simulate some processing
+        if ($number == 0) {
+            throw new DivisionByZeroError("Division by zero is not allowed!");
+        }
+
+        $result = 10 / $number; // This may raise DivisionByZeroError
+        $output = "The result is: " . $result;
+
+    } catch (InvalidArgumentException $e) {
+        $errorMessage = $e->getMessage();
+        logError($errorMessage);
+        $_SESSION['error'] = $errorMessage;
+    } catch (DivisionByZeroError $e) {
+        $errorMessage = $e->getMessage();
+        logError($errorMessage);
+        $_SESSION['error'] = $errorMessage;
+    } catch (Exception $e) {
+        $errorMessage = "An unexpected error occurred: " . $e->getMessage();
+        logError($errorMessage);
+        $_SESSION['error'] = $errorMessage;
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling App</title>
+</head>
+<body>
+    <h1>Error and Exception Handling Demo</h1>
+    <form method="POST">
+        <label for="number">Enter a number:</label>
+        <input type="text" id="number" name="number" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <ul>
+            <li style="color: red;"><?php echo $_SESSION['error']; ?></li>
+        </ul>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($output)): ?>
+        <p><?php echo $output; ?></p>
+    <?php endif; ?>
+</body>
+</html>
